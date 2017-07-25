@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Group16_FinalProject">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../../../../Applications/eclipse/java-neon/Eclipse.app/Contents/Eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/catalina.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/ecj-4.6.1.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/el-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/jasper.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../../../../../../../usr/local/Cellar/tomcat/8.5.12/libexec/lib/websocket-api.jar"/>
+    </path>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../../../../../../.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+        <pathelement location="../../../../../../../../.m2/repository/javax/servlet/jsp/javax.servlet.jsp-api/2.3.1/javax.servlet.jsp-api-2.3.1.jar"/>
+        <pathelement location="../../../../../../../../.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar"/>
+        <pathelement location="../../../../../../../../.m2/repository/junit/junit/4.10/junit-4.10.jar"/>
+        <pathelement location="../../../../../../../../.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+    </path>
+    <path id="Group16_FinalProject.classpath">
+        <pathelement location="target/classes"/>
+        <path refid="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+        <pathelement location="WebContent/WEB-INF/lib/json-simple-1.1.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/algs4.jar"/>
+    </path>
+    <path id="run.Entry.classpath">
+        <path refid="Group16_FinalProject.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Group16_FinalProject.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Entry">
+        <java classname="com.group16.proj.Entry" failonerror="true" fork="yes">
+            <classpath refid="run.Entry.classpath"/>
+        </java>
+    </target>
+</project>

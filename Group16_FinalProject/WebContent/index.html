@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Avoid Boarder Wait Times</title>
+  <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 20%;
+        min-height: 150px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .top-buffer { margin-top:15px; }
+    </style>
+</head>
+
+<body>
+	<div class="container-fluid">
+	<h1 class="text-center"><a href="/Group16_FinalProject" style="color:inherit; text-decoration: none;">Border Wait Times</a></h1>
+	</div>
+	<div id="map"></div>
+    <script>
+    
+    var crossings = [
+		{lat: 49.003004, lng: -122.265222},
+		{lat: 49.002897, lng: -122.485031},
+		{lat: 42.311953, lng: -83.073874},
+		{lat: 42.998585, lng: -82.423287},
+		{lat: 49.002152, lng: -123.068369},
+		{lat: 45.010799, lng: -74.736135},
+		{lat: 48.998835, lng: -111.958653},
+		{lat: 49.004951, lng: -122.757498},
+		{lat: 47.362187, lng: -68.327817},
+		{lat: 49.000719, lng: -97.237133},
+		{lat: 48.608664, lng: -93.399372},
+		{lat: 48.999232, lng: -102.554195},
+		{lat: 49.003002, lng: -122.734128},
+		{lat: 42.906982, lng: -78.905932},
+		{lat: 44.745296, lng: -75.470347},
+		{lat: 43.152961, lng: -79.043916},
+		{lat: 43.090168, lng: -79.06719},
+		{lat: 46.519126, lng: -84.34926},
+		{lat: 45.016196, lng: -73.083862},
+		{lat: 45.009329, lng: -73.451689},
+		{lat: 45.19245, lng: -67.282785},
+		{lat: 45.160918, lng: -67.308679},
+		{lat: 45.006485, lng: -72.08688},
+		{lat: 44.348388, lng: -75.982943},
+		{lat: 42.323739, lng: -83.04024},
+		{lat: 46.137909, lng: -67.777711}
+	];
+  
+	var markers = [];
+	var map;
+	
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: 46.9769, lng: -98.7244},
+	    zoom: 4
+	  });
+	  drop();
+	}
+	
+	infoWindow = new google.maps.InfoWindow;
+	
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+	  navigator.geolocation.getCurrentPosition(function(position) {
+	    var pos = {
+	      lat: position.coords.latitude,
+	      lng: position.coords.longitude
+	    };
+	
+	    infoWindow.setPosition(pos);
+	    infoWindow.setContent("You're Here");
+	    infoWindow.open(map);
+	    map.setCenter(pos);
+	  }, function() {
+	    handleLocationError();
+	  });
+	}
+	
+	function drop() {
+		for (var i = 0; i < crossings.length; i++) {
+          addMarkerWithTimeout(crossings[i], i * 200);
+        }
+	}
+		
+	function addMarkerWithTimeout(position, timeout) {
+        window.setTimeout(function() {
+          markers.push(new google.maps.Marker({
+            position: position,
+            map: map,
+            animation: google.maps.Animation.DROP
+          }));
+    	}, timeout);
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QonQNKz1E5ggJZPG9-eb21SZAoYqmCs&callback=initMap"
+    async defer></script>
+    <div class="container">
+    	<div class="row top-buffer">
+			<form class="col-md-12 col-lg-12 form-group" method="post" action="results">
+				<select class="form-control text-center" name="location"
+					onchange="if(this.value != null) { this.form.submit(); }">
+					<option value=>SELECT A BORDER CROSSING - DROPDOWN</option>
+					<option value=ABBOTSFORD_HUNTINGDON>Abbotsford-Huntingdon</option>
+					<option value=ALDERGROVE>Aldergrove</option>
+					<option value=AMBASSADOR_BRIDGE>Ambassador Bridge</option>
+					<option value=BLUE_WATER_BRIDGE>Blue Water Bridge</option>
+					<option value=BOUNDARY_BAY>Boundary Bay</option>
+					<option value=CORNWALL>Cornwall</option>
+					<option value=COUTTS>Coutts</option>
+					<option value=DOUGLAS_PEACE_ARCH>Douglas (Peace Arch)</option>
+					<option value=EDMUNDSTON>Edmundston</option>
+					<option value=EMERSON>Emerson</option>
+					<option value=FORT_FRANCES_BRIDGE>Fort Frances Bridge</option>
+					<option value=NORTH_PORTAL>North Portal</option>
+					<option value=PACIFIC_HIGHWAY>Pacific Highway</option>
+					<option value=PEACE_BRIDGE>Peace Bridge</option>
+					<option value=PRESCOTT>Prescott</option>
+					<option value=QUEENSTON_LEWISTON_BRIDGE>Queenston-Lewiston Bridge</option>
+					<option value=RAINBOW_BRIDGE>Rainbow Bridge</option>
+					<option value=SAULT_STE_MARIE>Sault Ste. Marie</option>
+					<option value=ST_STEPHEN>St. Stephen</option>
+					<option value=ST_STEPHEN_3RD_BRIDGE>St. Stephen 3rd Bridge</option>
+					<option value=STANSTEAD>Stanstead</option>
+					<option value=ST_ARMAND_PHILIPSBURG>St-Armand/Philipsburg</option>
+					<option value=ST_BERNARD_DE_LACOLLE>St-Bernard-de-Lacolle</option>
+					<option value=THOUSAND_ISLANDS_BRIDGE>Thousand Islands Bridge</option>
+					<option value=WINDSOR_AND_DETROIT_TUNNEL>Windsor and Detroit Tunnel</option>
+					<option value=WOODSTOCK_ROAD>Woodstock Road</option>
+				</select>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
